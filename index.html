@@ -2,13 +2,14 @@
 <html>
 <head>
   <title>My Website</title>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
       background: #0f172a;
       color: white;
       text-align: center;
       padding-top: 100px;
+      font-family: Arial, sans-serif;
     }
 
     h1 {
@@ -21,25 +22,43 @@
       color: #cbd5e1;
     }
 
-    button {
-      margin-top: 20px;
-      padding: 12px 20px;
+    .button {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 25px;
       font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      transition: 0.2s;
+    }
+
+    .discord {
+      background: #5865F2;
+    }
+
+    .roblox {
+      background: #ff0000;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
-<body>
-  <h1>Welcome to my website 👋</h1>
-  <p>I made this from scratch and put it online.</p>
-  <button onclick="sayHello()">Click me</button>
 
-  <script>
-    function sayHello() {
-      alert("Your website works!");
-    }
-  </script>
+<body>
+
+  <h1>Welcome to my website 👋</h1>
+  <p>Blue & White Troll Tower</p>
+
+  <a class="button discord" href="https://discord.gg/gQgDtUe6UF" target="_blank">
+    Join Discord
+  </a>
+
+  <a class="button roblox" href="https://www.roblox.com/games/70738198047390/blue-and-white-troll-tower#!/store" target="_blank">
+    Play Roblox Game
+  </a>
+
 </body>
 </html>
