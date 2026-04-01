@@ -27,10 +27,10 @@
     .subtitle {
       font-size: 22px;
       color: #94a3b8;
-      animation: slide 3s infinite;
+      animation: move 3s infinite;
     }
 
-    @keyframes slide {
+    @keyframes move {
       0% { transform: translateX(-20px); }
       50% { transform: translateX(20px); }
       100% { transform: translateX(-20px); }
@@ -62,7 +62,6 @@
       box-shadow: 0 0 50px white;
     }
 
-    /* FLASH EFFECT */
     .flash {
       position: fixed;
       width: 100%;
@@ -78,7 +77,6 @@
       95% { opacity: 0.15; }
     }
 
-    /* PARTICLES */
     .particle {
       position: absolute;
       width: 6px;
@@ -118,16 +116,18 @@
 
 <button class="music" onclick="playMusic()">🎧 Start Music</button>
 
+<!-- WORKING MUSIC -->
 <audio id="music">
-  <source src="https://www.myinstants.com/media/sounds/trillium.mp3">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 function playMusic() {
-  document.getElementById("music").play();
+  let music = document.getElementById("music");
+  music.volume = 0.5;
+  music.play();
 }
 
-/* PARTICLE CLICK EFFECT */
 function spawnParticles(e) {
   for (let i = 0; i < 15; i++) {
     let p = document.createElement("div");
