@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Website</title>
+  <title>Blue & White Troll Tower</title>
 
   <style>
     body {
-      background: #0f172a;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #0f172a, #020617);
       color: white;
       text-align: center;
-      padding-top: 100px;
-      font-family: Arial, sans-serif;
+      padding-top: 80px;
+      animation: fadeIn 1.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
+      font-size: 50px;
+      margin-bottom: 10px;
     }
 
     p {
-      font-size: 22px;
-      color: #cbd5e1;
+      font-size: 20px;
+      color: #94a3b8;
+      margin-bottom: 40px;
+    }
+
+    img {
+      width: 150px;
+      margin-bottom: 20px;
     }
 
     .button {
       display: inline-block;
       margin: 15px;
-      padding: 15px 25px;
+      padding: 15px 30px;
       font-size: 18px;
-      border-radius: 10px;
+      border-radius: 12px;
       text-decoration: none;
       color: white;
-      transition: 0.2s;
+      transition: 0.25s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
     .discord {
@@ -38,27 +52,40 @@
     }
 
     .roblox {
-      background: #ff0000;
+      background: #e11d48;
     }
 
     .button:hover {
       transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Welcome to my website 👋</h1>
-  <p>Blue & White Troll Tower</p>
+  <!-- Optional logo -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_Logo.png">
 
-  <a class="button discord" href="https://discord.gg/gQgDtUe6UF" target="_blank">
-    Join Discord
+  <h1>Blue & White Troll Tower 👑</h1>
+  <p>Play the game and join the community!</p>
+
+  <a class="button roblox" href="https://www.roblox.com/games/70738198047390/blue-and-white-troll-tower#!/store" target="_blank" onclick="playSound()">
+    🎮 Play Roblox Game
   </a>
 
-  <a class="button roblox" href="https://www.roblox.com/games/70738198047390/blue-and-white-troll-tower#!/store" target="_blank">
-    Play Roblox Game
+  <a class="button discord" href="https://discord.gg/gQgDtUe6UF" target="_blank" onclick="playSound()">
+    💬 Join Discord
   </a>
+
+  <!-- Sound -->
+  <audio id="clickSound" src="https://www.myinstants.com/media/sounds/pop.mp3"></audio>
+
+  <script>
+    function playSound() {
+      document.getElementById("clickSound").play();
+    }
+  </script>
 
 </body>
 </html>
