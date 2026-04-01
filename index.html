@@ -7,157 +7,93 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: radial-gradient(circle at center, #020617, #000);
-      color: white;
       text-align: center;
-      overflow: hidden;
-      animation: fadeIn 1.5s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      background: linear-gradient(180deg, #0a0f1f, #111827);
+      color: white;
+      padding-top: 80px;
     }
 
     h1 {
-      font-size: 55px;
-      margin-top: 100px;
-      animation: glow 2s infinite alternate;
+      font-size: 48px;
+      margin-bottom: 10px;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #3b82f6; }
-      to { text-shadow: 0 0 25px #60a5fa; }
-    }
-
-    .subtitle {
+    p {
       font-size: 20px;
-      color: #94a3b8;
-      margin-bottom: 40px;
-      animation: floatText 4s ease-in-out infinite;
+      color: #9ca3af;
+      margin-bottom: 30px;
     }
 
-    @keyframes floatText {
+    /* LOGO */
+    .logo {
+      width: 260px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+
+      animation: float 4s ease-in-out infinite,
+                 glow 2.5s infinite alternate;
+    }
+
+    @keyframes float {
       0% { transform: translateY(0px); }
-      50% { transform: translateY(10px); }
+      50% { transform: translateY(-12px); }
       100% { transform: translateY(0px); }
     }
 
-    .button {
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 10px #3b82f6); }
+      to { filter: drop-shadow(0 0 25px #60a5fa); }
+    }
+
+    /* BUTTONS */
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .btn {
       display: inline-block;
-      margin: 15px;
-      padding: 18px 35px;
-      font-size: 20px;
-      border-radius: 12px;
+      margin: 10px;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
       text-decoration: none;
       color: white;
-      transition: 0.25s;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
     }
 
     .discord {
       background: #5865F2;
-      box-shadow: 0 0 15px #5865F2;
     }
 
     .roblox {
-      background: #ef4444;
-      box-shadow: 0 0 15px #ef4444;
-    }
-
-    .button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 30px white;
-    }
-
-    /* Smooth background glow */
-    .bg-glow {
-      position: fixed;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(59,130,246,0.1), transparent);
-      animation: moveGlow 15s linear infinite;
-    }
-
-    @keyframes moveGlow {
-      from { transform: translate(-50%, -50%); }
-      to { transform: translate(50%, 50%); }
-    }
-
-    /* particles */
-    .particle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: white;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    button.music {
-      margin-top: 30px;
-      padding: 12px 25px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
+      background: #e11d48;
     }
   </style>
 </head>
 
-<body onclick="spawnParticles(event)">
+<body>
 
-<div class="bg-glow"></div>
+  <!-- YOUR LOGO -->
+  <img src="logo.png" class="logo">
 
-<h1>Blue & White Troll Tower 👑</h1>
-<p class="subtitle">Smooth TRILLIUM Vibes ⚡</p>
+  <h1>Blue & White Troll Tower</h1>
+  <p>Welcome to the official site 😈</p>
 
-<a class="button roblox" href="https://www.roblox.com/games/70738198047390/blue-and-white-troll-tower#!/store" target="_blank">
-  🎮 Play Game
-</a>
+  <div class="buttons">
+    <a href="https://discord.gg/gQgDtUe6UF" target="_blank" class="btn discord">
+      Join Discord
+    </a>
 
-<a class="button discord" href="https://discord.gg/gQgDtUe6UF" target="_blank">
-  💬 Join Discord
-</a>
-
-<br>
-
-<button class="music" onclick="playMusic()">🎧 Start Music</button>
-
-<audio id="music">
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-function playMusic() {
-  let music = document.getElementById("music");
-  music.volume = 0.5;
-  music.play();
-}
-
-/* click particles */
-function spawnParticles(e) {
-  for (let i = 0; i < 10; i++) {
-    let p = document.createElement("div");
-    p.className = "particle";
-    p.style.left = e.clientX + "px";
-    p.style.top = e.clientY + "px";
-
-    let x = (Math.random() - 0.5) * 150;
-    let y = (Math.random() - 0.5) * 150;
-
-    document.body.appendChild(p);
-
-    p.animate([
-      { transform: "translate(0,0)", opacity: 1 },
-      { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
-    ], {
-      duration: 700
-    });
-
-    setTimeout(() => p.remove(), 700);
-  }
-}
-</script>
+    <a href="https://www.roblox.com/games/70738198047390/blue-and-white-troll-tower#!/store" target="_blank" class="btn roblox">
+      Play Game
+    </a>
+  </div>
 
 </body>
 </html>
