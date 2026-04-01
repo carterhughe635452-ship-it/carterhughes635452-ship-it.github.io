@@ -7,21 +7,16 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #0f172a, #020617);
+      background: radial-gradient(circle, #020617, #000000);
       color: white;
       text-align: center;
-      padding-top: 80px;
-      animation: fadeIn 1.5s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      padding-top: 100px;
+      overflow: hidden;
     }
 
     h1 {
-      font-size: 50px;
-      margin-bottom: 10px;
+      font-size: 55px;
+      text-shadow: 0 0 25px #60a5fa;
     }
 
     p {
@@ -30,62 +25,85 @@
       margin-bottom: 40px;
     }
 
-    img {
-      width: 150px;
-      margin-bottom: 20px;
-    }
-
     .button {
       display: inline-block;
       margin: 15px;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 18px 35px;
+      font-size: 20px;
       border-radius: 12px;
       text-decoration: none;
       color: white;
-      transition: 0.25s;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: 0.3s;
     }
 
     .discord {
       background: #5865F2;
+      box-shadow: 0 0 20px #5865F2;
     }
 
     .roblox {
-      background: #e11d48;
+      background: #ef4444;
+      box-shadow: 0 0 20px #ef4444;
     }
 
     .button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      transform: scale(1.15);
+      box-shadow: 0 0 40px white;
+    }
+
+    /* animated background glow */
+    .glow {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59,130,246,0.1), transparent);
+      animation: move 10s linear infinite;
+    }
+
+    @keyframes move {
+      from { transform: translate(-50%, -50%); }
+      to { transform: translate(50%, 50%); }
+    }
+
+    button.music {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Optional logo -->
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_Logo.png">
+<div class="glow"></div>
 
-  <h1>Blue & White Troll Tower 👑</h1>
-  <p>Play the game and join the community!</p>
+<h1>Blue & White Troll Tower 👑</h1>
+<p>TRILLIUM MODE ⚡</p>
 
-  <a class="button roblox" href="https://www.roblox.com/games/70738198047390/blue-and-white-troll-tower#!/store" target="_blank" onclick="playSound()">
-    🎮 Play Roblox Game
-  </a>
+<a class="button roblox" href="https://www.roblox.com/games/70738198047390/blue-and-white-troll-tower#!/store" target="_blank">
+  🎮 Play Game
+</a>
 
-  <a class="button discord" href="https://discord.gg/gQgDtUe6UF" target="_blank" onclick="playSound()">
-    💬 Join Discord
-  </a>
+<a class="button discord" href="https://discord.gg/gQgDtUe6UF" target="_blank">
+  💬 Join Discord
+</a>
 
-  <!-- Sound -->
-  <audio id="clickSound" src="https://www.myinstants.com/media/sounds/pop.mp3"></audio>
+<br>
 
-  <script>
-    function playSound() {
-      document.getElementById("clickSound").play();
-    }
-  </script>
+<button class="music" onclick="playMusic()">🎧 Start Music</button>
+
+<audio id="music">
+  <source src="https://www.myinstants.com/media/sounds/trillium.mp3">
+</audio>
+
+<script>
+function playMusic() {
+  document.getElementById("music").play();
+}
+</script>
 
 </body>
 </html>
