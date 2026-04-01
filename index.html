@@ -7,22 +7,33 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: radial-gradient(circle, #020617, #000000);
+      background: black;
       color: white;
       text-align: center;
-      padding-top: 100px;
       overflow: hidden;
     }
 
     h1 {
-      font-size: 55px;
-      text-shadow: 0 0 25px #60a5fa;
+      font-size: 60px;
+      margin-top: 100px;
+      animation: glow 1s infinite alternate;
     }
 
-    p {
-      font-size: 20px;
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #3b82f6; }
+      to { text-shadow: 0 0 30px #60a5fa; }
+    }
+
+    .subtitle {
+      font-size: 22px;
       color: #94a3b8;
-      margin-bottom: 40px;
+      animation: slide 3s infinite;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(-20px); }
+      50% { transform: translateX(20px); }
+      100% { transform: translateX(-20px); }
     }
 
     .button {
@@ -33,7 +44,7 @@
       border-radius: 12px;
       text-decoration: none;
       color: white;
-      transition: 0.3s;
+      transition: 0.2s;
     }
 
     .discord {
@@ -47,22 +58,34 @@
     }
 
     .button:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 40px white;
+      transform: scale(1.2);
+      box-shadow: 0 0 50px white;
     }
 
-    /* animated background glow */
-    .glow {
+    /* FLASH EFFECT */
+    .flash {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+      animation: flashBeat 1.2s infinite;
+    }
+
+    @keyframes flashBeat {
+      0%, 90%, 100% { opacity: 0; }
+      95% { opacity: 0.15; }
+    }
+
+    /* PARTICLES */
+    .particle {
       position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(59,130,246,0.1), transparent);
-      animation: move 10s linear infinite;
-    }
-
-    @keyframes move {
-      from { transform: translate(-50%, -50%); }
-      to { transform: translate(50%, 50%); }
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     button.music {
@@ -76,12 +99,12 @@
   </style>
 </head>
 
-<body>
+<body onclick="spawnParticles(event)">
 
-<div class="glow"></div>
+<div class="flash"></div>
 
 <h1>Blue & White Troll Tower 👑</h1>
-<p>TRILLIUM MODE ⚡</p>
+<p class="subtitle">TRILLIUM MODE ⚡</p>
 
 <a class="button roblox" href="https://www.roblox.com/games/70738198047390/blue-and-white-troll-tower#!/store" target="_blank">
   🎮 Play Game
@@ -102,6 +125,30 @@
 <script>
 function playMusic() {
   document.getElementById("music").play();
+}
+
+/* PARTICLE CLICK EFFECT */
+function spawnParticles(e) {
+  for (let i = 0; i < 15; i++) {
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = e.clientX + "px";
+    p.style.top = e.clientY + "px";
+
+    let x = (Math.random() - 0.5) * 200;
+    let y = (Math.random() - 0.5) * 200;
+
+    document.body.appendChild(p);
+
+    p.animate([
+      { transform: "translate(0,0)", opacity: 1 },
+      { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
+    ], {
+      duration: 800
+    });
+
+    setTimeout(() => p.remove(), 800);
+  }
 }
 </script>
 
